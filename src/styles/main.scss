@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'constants';
+
+.modules-left-bar {
+  height: calc(100vh - 56px);
+  background: $background-gray;
+}
+
+.modules-wrapper {
+}
+
+.text-editor-wrapper {
+  .text-area-main {
+    width: 80%;
+  }
+}
