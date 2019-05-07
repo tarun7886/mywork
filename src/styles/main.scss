@@ -1,16 +1,57 @@
 @import 'variables';
 @import 'constants';
+@import 'text-editor';
+@import 'image-editor';
+
+.banner-container {
+  height: 100px;
+  background: rgb(255, 166, 0);
+}
+
+.top-nav-bar {
+  .topnav-right {
+    text-align: right;
+    width: 100%;
+    &-link {
+      color: $text-gray;
+      text-decoration: none;
+      padding: 0px 10px;
+      &:hover,
+      &:focus {
+        color: white;
+      }
+    }
+  }
+}
 
 .modules-left-bar {
   height: calc(100vh - 56px);
-  background: $background-gray;
+  background: lighten($background-gray, 4%);
+  transition: width 0.15s ease;
+  width: 15%;
+  a {
+    text-decoration: none;
+    color: $primary-blue;
+  }
+  .nav-item {
+    position: relative;
+    &.active {
+      background: $background-gray;
+    }
+    &:hover {
+      background: $background-gray;
+    }
+  }
+  .icon-class {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
 }
 
 .modules-wrapper {
-}
-
-.text-editor-wrapper {
-  .text-area-main {
-    width: 80%;
-  }
 }

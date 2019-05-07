@@ -3,7 +3,7 @@ import ModulesBar from '../component/ModulesBar'
 import TextEditor from '../component/textEditor/index'
 import { Container, Row, Col } from '../../node_modules/react-bootstrap'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import About from './About'
+import ImageEditor from '../component/imageEditor'
 
 class Home extends Component {
   constructor() {
@@ -12,12 +12,12 @@ class Home extends Component {
       modules: { 'text-editor': 'Text Editor', 'image-editor': 'Image Editor' },
       activeModule: 'text-editor',
     }
-    this.selectModule = this.selectModule.bind(this)
+    this.activateModule = this.activateModule.bind(this)
   }
 
-  selectModule(mod) {
+  activateModule(mod) {
     this.setState({
-      activateModule: mod,
+      activeModule: mod,
     })
   }
 
@@ -26,16 +26,22 @@ class Home extends Component {
       <Router>
         <Container fluid>
           <Row>
-            <Col xs={12} sm={2} md={2} lg={2} className="modules-left-bar">
+            <div className="  modules-left-bar padding0">
               <ModulesBar
                 modules={this.state.modules}
-                activateMod={this.selectModule}
+                activeModule={this.state.activeModule}
+                activateModule={this.activateModule}
               />
-            </Col>
-            <Col xs={12} sm={10} md={10} lg={10} className="padding20">
+            </div>
+            <div className="padding20 ">
+              <Route path={`/home`} exact component={TextEditor} />
               <Route path={`/home/text-editor`} component={TextEditor} />
-              <Route exact path={'/home/image-editor'} component={About} />
-            </Col>
+              <Route
+                exact
+                path={'/home/image-editor'}
+                component={ImageEditor}
+              />
+            </div>
           </Row>
         </Container>
       </Router>

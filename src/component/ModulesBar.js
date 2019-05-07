@@ -1,18 +1,34 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import _ from 'underscore'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
+import classNames from 'classnames'
 
 const ModulesBar = props => {
   var output = []
+  var i = 0
+
   _.map(props.modules, (module, key) => {
     output.push(
-      <Nav.Item>
-        <Link to={`/home/${key}`} className="nav-link">
+      <Nav.Item
+        key={i}
+        className={classNames({
+          active: key === props.activeModule,
+        })}>
+        <Link
+          to={`/home/${key}`}
+          onClick={() => {
+            props.activateModule(key)
+          }}
+          className="nav-link padding10">
+          <span className={` icon-class marginlr10`}>
+            <img src={require(`../images/${key}.png`)} />
+          </span>
           {module}
         </Link>
       </Nav.Item>
     )
+    i++
   })
 
   return <Nav className="navbar-nav">{output}</Nav>
