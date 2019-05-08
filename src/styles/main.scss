@@ -1,7 +1,24 @@
 @import 'variables';
-@import 'constants';
+@import 'global-constants';
 @import 'text-editor';
 @import 'image-editor';
+
+/* The default outline styling, for greatest accessibility. */
+/* You can skip this to just use the browser's defaults. */
+:focus {
+  outline: #08f auto 2px;
+}
+
+/* When mouse is detected, ALL focused elements have outline removed. */
+/* You could apply this selector only to buttons, if you wanted. */
+body.using-mouse :focus {
+  outline: none;
+}
+
+body:not(.using-mouse) .btn-primary:focus {
+  background-color: #005c9e;
+  border-color: #000;
+}
 
 .banner-container {
   height: 100px;
@@ -13,11 +30,13 @@
     text-align: right;
     width: 100%;
     &-link {
-      color: $text-gray;
+      color: $primary-blue;
       text-decoration: none;
-      padding: 0px 10px;
+      padding: 5px 10px;
+      border-radius: 3px;
       &:hover,
       &:focus {
+        background: $primary-blue;
         color: white;
       }
     }
