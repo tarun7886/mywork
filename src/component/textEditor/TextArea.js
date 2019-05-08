@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import _ from 'underscore'
 
 export default class TextEditor extends Component {
   constructor(props) {
@@ -18,7 +17,7 @@ export default class TextEditor extends Component {
   }
 
   componentDidMount() {
-    this.sDefTxt = this.oDoc.innerHTML
+    this.sDefTxt = this.oDoc.current.innerHTML
   }
 
   formatDoc(sCmd, sValue) {
@@ -47,7 +46,7 @@ export default class TextEditor extends Component {
     oPrntWin.document.open()
     oPrntWin.document.write(
       '<!doctype html><html><head><title>Print</title></head><body onload="print();">' +
-        this.oDoc.innerHTML +
+        this.oDoc.current.innerHTML +
         '</body></html>'
     )
     oPrntWin.document.close()
@@ -289,7 +288,12 @@ export default class TextEditor extends Component {
                 className="intLink"
                 alt="Hyperlink"
                 title="Hyperlink"
-                onClick="var sLnk=prompt('Write the URL here','http:\/\/');if(sLnk&&sLnk!=''&&sLnk!='http://'){formatDoc('createlink',sLnk)}"
+                onClick={() => {
+                  var sLnk = prompt('Write the URL here', 'http://')
+                  if (sLnk && sLnk !== '' && sLnk !== 'http://') {
+                    this.formatDoc('createlink', sLnk)
+                  }
+                }}
                 src="data:image/gif;base64,R0lGODlhFgAWAOMKAB1ChDRLY19vj3mOrpGjuaezxrCztb/I19Ha7Pv8/f///////////////////////yH5BAEKAA8ALAAAAAAWABYAAARY8MlJq7046827/2BYIQVhHg9pEgVGIklyDEUBy/RlE4FQF4dCj2AQXAiJQDCWQCAEBwIioEMQBgSAFhDAGghGi9XgHAhMNoSZgJkJei33UESv2+/4vD4TAQA7"
               />
               <img

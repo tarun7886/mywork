@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
+import _ from 'underscore'
 import ModulesBar from '../component/ModulesBar'
 import TextEditor from '../component/textEditor/index'
-import { Container, Row, Col } from '../../node_modules/react-bootstrap'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Container, Row } from '../../node_modules/react-bootstrap'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ImageEditor from '../component/imageEditor'
 
 class Home extends Component {
   constructor() {
     super()
     this.state = {
-      modules: { 'text-editor': 'Text Editor', 'image-editor': 'Image Editor' },
+      modules: {
+        'text-editor': 'Text Editor',
+        'image-editor': 'Image Editor',
+      },
       activeModule: 'text-editor',
     }
     this.activateModule = this.activateModule.bind(this)
@@ -19,6 +23,14 @@ class Home extends Component {
     this.setState({
       activeModule: mod,
     })
+  }
+
+  componentWillMount() {
+    let pathname = window.location.pathname
+    pathname = pathname.split('/')
+    if (_.size(pathname) > 2) {
+      this.activateModule(pathname[2])
+    }
   }
 
   render() {

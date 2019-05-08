@@ -22,7 +22,7 @@ const ModulesBar = props => {
           }}
           className="nav-link padding10">
           <span className={` icon-class marginlr10`}>
-            <img src={require(`../images/${key}.png`)} />
+            <img src={`${process.env.PUBLIC_URL}/images/${key}.png`} alt="" />
           </span>
           {module}
         </Link>

@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { Jumbotron, Container } from 'react-bootstrap'
 
 class About extends Component {
-  constructor() {
-    super()
-  }
   render() {
     return (
-      <Jumbotron fluid>
-        <Container>
-          <h1>Tarun 'aka' TJ</h1>
-          <p>
+      <div className="about-container">
+        <div className="parallax image-1" />
+        <div className="about-content padding30">
+          <h1 className="ab-heading">Tarun</h1>
+          <p className="ab-content">
             Full Stack Developer at VMock, handling one of their web services
             "Aspire". Started with PDF parsing then to query optimization,
             creating analytics data from the tracking data getting new info from
@@ -20,15 +17,18 @@ class About extends Component {
             have also been an active coder during my college days. During my
             intern at PwC, I created a virtual reality application using Unity
             3D for retail companies data visualization and management as a proof
-            of concept. Currently, my development languages are PHP and
-            JavaScript. Libraries I have worked on are Laravel, React, Unity -
-            3D. In college days I have also coded in Python, Java, C++. As an
-            aspirant coder, I keep looking forward to challenging tasks and
-            problem statements. I like to learn by getting hands-on and I am
-            always up for learning and face new challenges.
+            of concept. <br />
+            Currently, my development languages are PHP and JavaScript.
+            Libraries I have worked on are Laravel, React, Unity - 3D. In
+            college days I have also coded in Python, Java, C++. As an aspirant
+            coder, I keep looking forward to challenging tasks and problem
+            statements.
+            <br />I like to learn by getting hands-on and I am always up for
+            learning and face new challenges.
           </p>
-        </Container>
-      </Jumbotron>
+        </div>
+        <div className="parallax image-2" />
+      </div>
     )
   }
 }

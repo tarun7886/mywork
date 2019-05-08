@@ -2,6 +2,7 @@
 @import 'global-constants';
 @import 'text-editor';
 @import 'image-editor';
+@import 'small-module';
 
 /* The default outline styling, for greatest accessibility. */
 /* You can skip this to just use the browser's defaults. */
@@ -23,6 +24,25 @@ body:not(.using-mouse) .btn-primary:focus {
 .banner-container {
   height: 100px;
   background: rgb(255, 166, 0);
+}
+
+//STYLES TO INHERIT IF NOT ASSIGN SPECIFICLY
+body {
+  text-align: justify;
+}
+
+.about-container {
+  .about-content {
+    background: white;
+    font-family: 'Georgia';
+    .ab-heading {
+      text-align: center;
+    }
+    .ab-content {
+      font-style: italic;
+      // text-align: justify;
+    }
+  }
 }
 
 .top-nav-bar {
