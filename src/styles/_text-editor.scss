@@ -5,11 +5,19 @@
     position: relative;
     margin: 0 20%;
   }
+  .function-panel {
+    border: 1px solid $primary-blue;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
   .editable-div {
     border-radius: 3px;
     border: 1px solid $primary-blue;
-    width: 80%;
+    width: 83.33333%;
     min-height: 200px;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   .text-area-main {
     width: 80%;
@@ -52,6 +60,42 @@
   }
   #editMode label {
     cursor: pointer;
+  }
+  #toolBar1 {
+    .selectDiv {
+      position: relative;
+      display: inline-block;
+    }
+    .selectDiv:after {
+      content: '>';
+      transform: rotate(90deg);
+      color: #0ebeff;
+      right: 11px;
+      top: 5px;
+      padding: 6px 5px;
+      border-bottom: 1px solid #0ebeff;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* IE11 hide native button (thanks Matt!) */
+    select::-ms-expand {
+      display: none;
+    }
+
+    .selectDiv select {
+      appearance: none;
+      display: inline-block;
+      max-width: 320px;
+      min-width: 130px;
+      margin: 5px 5px;
+      padding: 5px 12px;
+      font-size: 16px;
+      color: #333;
+      background-color: #ffffff;
+      background-image: none;
+      border: 1px solid #0ebeff;
+    }
   }
   #toolBar2 {
     img.intLink + img.intLink {

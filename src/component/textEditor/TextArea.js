@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class TextEditor extends Component {
+class TextEditor extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -55,89 +56,99 @@ export default class TextEditor extends Component {
   render() {
     return (
       <div className="text-editor-container">
-        <div className="row">
-          <div className="col">
+        <div className="row margin0">
+          <div className="col col-sm-10 function-panel ">
             <div id="toolBar1">
-              <select
-                onChange={event => {
-                  this.formatDoc('formatblock', event.target.value)
-                }}
-                defaultValue="formatting">
-                <option value="" disabled hidden>
-                  - formatting -
-                </option>
-                <option value="h1">Title 1</option>
-                <option value="h2">Title 2</option>
-                <option value="h3">Title 3</option>
-                <option value="h4">Title 4</option>
-                <option value="h5">Title 5</option>
-                <option value="h6">Subtitle</option>
-                <option value="p">Paragraph</option>
-                <option value="pre">Preformatted</option>
-              </select>
-              <select
-                onChange={event => {
-                  this.formatDoc('fontname', event.target.value)
-                }}
-                defaultValue="font">
-                <option className="heading" value="font">
-                  - font -
-                </option>
-                <option value="Arial">Arial</option>
-                <option value="Arial Black">Arial Black</option>
-                <option value="Courier New">Courier New</option>
-                <option value="Times New Roman">Times New Roman</option>
-              </select>
-              <select
-                onChange={event => {
-                  this.formatDoc('fontsize', event.target.value)
-                }}>
-                <option className="heading" value="size">
-                  - size -
-                </option>
-                <option value="1">Very small</option>
-                <option value="2">A bit small</option>
-                <option value="3">Normal</option>
-                <option value="4">Medium-large</option>
-                <option value="5">Big</option>
-                <option value="6">Very big</option>
-                <option value="7">Maximum</option>
-              </select>
-              <select
-                onChange={event => {
-                  this.formatDoc('forecolor', event.target.value)
-                }}>
-                <option
-                  className="heading"
-                  value=""
-                  disabled
-                  hidden
-                  defaultValue>
-                  - color -
-                </option>
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-              </select>
-              <select
-                onChange={event => {
-                  this.formatDoc('backcolor', event.target.value)
-                }}>
-                <option
-                  className="heading"
-                  value=""
-                  disabled
-                  hidden
-                  defaultValue>
-                  - background -
-                </option>
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-              </select>
+              <div className="selectDiv">
+                <select
+                  onChange={event => {
+                    this.formatDoc('formatblock', event.target.value)
+                  }}
+                  defaultValue="formatting">
+                  <option value="" disabled hidden>
+                    - formatting -
+                  </option>
+                  <option value="h1">Title 1</option>
+                  <option value="h2">Title 2</option>
+                  <option value="h3">Title 3</option>
+                  <option value="h4">Title 4</option>
+                  <option value="h5">Title 5</option>
+                  <option value="h6">Subtitle</option>
+                  <option value="p">Paragraph</option>
+                  <option value="pre">Preformatted</option>
+                </select>
+              </div>
+              <div className="selectDiv">
+                <select
+                  onChange={event => {
+                    this.formatDoc('fontname', event.target.value)
+                  }}
+                  defaultValue="font">
+                  <option className="heading" value="font">
+                    - font -
+                  </option>
+                  <option value="Arial">Arial</option>
+                  <option value="Arial Black">Arial Black</option>
+                  <option value="Courier New">Courier New</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                </select>
+              </div>
+              <div className="selectDiv">
+                <select
+                  onChange={event => {
+                    this.formatDoc('fontsize', event.target.value)
+                  }}>
+                  <option className="heading" value="size">
+                    - size -
+                  </option>
+                  <option value="1">Very small</option>
+                  <option value="2">A bit small</option>
+                  <option value="3">Normal</option>
+                  <option value="4">Medium-large</option>
+                  <option value="5">Big</option>
+                  <option value="6">Very big</option>
+                  <option value="7">Maximum</option>
+                </select>
+              </div>
+              <div className="selectDiv">
+                <select
+                  onChange={event => {
+                    this.formatDoc('forecolor', event.target.value)
+                  }}>
+                  <option
+                    className="heading"
+                    value=""
+                    disabled
+                    hidden
+                    defaultValue>
+                    - color -
+                  </option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                </select>
+              </div>
+              <div className="selectDiv">
+                <select
+                  onChange={event => {
+                    this.formatDoc('backcolor', event.target.value)
+                  }}>
+                  <option
+                    className="heading"
+                    value=""
+                    disabled
+                    hidden
+                    defaultValue>
+                    - background -
+                  </option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                </select>
+              </div>
             </div>
             <div id="toolBar2">
               <img
@@ -329,10 +340,17 @@ export default class TextEditor extends Component {
         <div
           id="text-preview"
           ref={this.oDoc}
-          className="editable-div"
+          className="editable-div padding10"
           contentEditable={true}
         />
       </div>
     )
   }
 }
+const mapStateToProps = state => {
+  return state
+}
+export default connect(
+  mapStateToProps,
+  {}
+)(TextEditor)

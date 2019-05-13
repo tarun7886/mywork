@@ -9,7 +9,6 @@ const Contact = props => {
           <Card.Title>Tarun Jain</Card.Title>
           <Card.Subtitle>Full Stack Developer</Card.Subtitle>
         </Card.Body>
-
         <Card.Body>
           <Card.Text>Feel free to contact me on:</Card.Text>
           <Card.Link href="mailto:tarunj9878@gmail.com">EMAIL</Card.Link>

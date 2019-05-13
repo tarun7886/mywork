@@ -21,31 +21,38 @@ body:not(.using-mouse) .btn-primary:focus {
   border-color: #000;
 }
 
-.banner-container {
-  height: 100px;
-  background: rgb(255, 166, 0);
-}
-
 //STYLES TO INHERIT IF NOT ASSIGN SPECIFICLY
 body {
   text-align: justify;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.about-container {
-  .about-content {
-    background: white;
-    font-family: 'Georgia';
-    .ab-heading {
-      text-align: center;
-    }
-    .ab-content {
-      font-style: italic;
-      // text-align: justify;
-    }
-  }
+.banner-container {
+  height: 100px;
+  background: linear-gradient(to right, #f0f2f0, #000c40);
 }
 
 .top-nav-bar {
+  font-size: 24px;
+  position: fixed;
+  top: -47px;
+  transition: 200ms ease 0s;
+  display: flex;
+  width: 100%;
+  background: linear-gradient(to right, black, white);
+  z-index: 20;
+  &.is-invisible {
+    opacity: 0;
+  }
+  &.is-visible {
+    opacity: 1;
+    top: 0;
+  }
+  .topnav-main-link {
+    color: whitesmoke;
+    font-size: 28px;
+    text-decoration: none;
+  }
   .topnav-right {
     text-align: right;
     width: 100%;
@@ -64,21 +71,23 @@ body {
 }
 
 .modules-left-bar {
-  height: calc(100vh - 56px);
-  background: lighten($background-gray, 4%);
-  transition: width 0.15s ease;
+  height: calc(100vh - 100px);
   width: 15%;
+  font-family: georgia;
+  background: linear-gradient(to bottom, #f0f2f0, #000c40);
   a {
     text-decoration: none;
-    color: $primary-blue;
+    color: black;
   }
   .nav-item {
     position: relative;
     &.active {
-      background: $background-gray;
     }
     &:hover {
-      background: $background-gray;
+      box-shadow: 0 2px 20px 0 #d9dfe4;
+      transition: all 0.1s linear;
+      transform: scale(1, 1.03);
+      z-index: 2;
     }
   }
   .icon-class {
@@ -92,5 +101,51 @@ body {
   }
 }
 
-.modules-wrapper {
+.module-panel-wrapper {
+  background: linear-gradient(135deg, #f0f2f0, #000c40);
+  width: 85%;
+  .module-panel {
+    width: 100%;
+    height: 100%;
+    background: white;
+  }
+}
+
+//ABOUT CONTAINER STYLING
+.about-container {
+  color: white;
+  .about-content {
+    &-1 {
+      background: #f0f2f0; /* fallback for old browsers */
+      background: linear-gradient(
+        to right,
+        #f0f2f0,
+        #000c40
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    &-2 {
+      background: #f0f2f0; /* fallback for old browsers */
+      background: linear-gradient(
+        to right,
+        #000c40,
+        #f0f2f0
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    &-1,
+    &-2 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      .ab-heading {
+        text-align: center;
+        font-family: fantasy;
+      }
+      .ab-content {
+        font-style: italic;
+      }
+      .slide-in {
+        &-left,
+        &-right {
+        }
+      }
+    }
+  }
 }

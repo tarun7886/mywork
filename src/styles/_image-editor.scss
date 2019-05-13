@@ -1,4 +1,30 @@
 .image-editor-wrapper {
   .upload-btn {
   }
+  .img-panel {
+    &-filter,
+    &-crop {
+      text-align: center;
+      margin: 0 15%;
+      border: 1px solid $primary-blue;
+      border-radius: 3px;
+      h3 {
+        cursor: pointer;
+      }
+      .img-panel-tabs {
+        .img-panel-tab {
+          margin: 10px;
+          & > div {
+            margin-bottom: -10px;
+          }
+          input[type='range'] {
+            width: 90%;
+            height: 2px;
+            appearance: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }

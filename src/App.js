@@ -16,6 +16,7 @@ class App extends Component {
       document.body.classList.remove('using-mouse')
     })
   }
+
   render() {
     return (
       <div>
