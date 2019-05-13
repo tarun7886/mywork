@@ -10,7 +10,7 @@ class TopNavBar extends Component {
         bg="white"
         variant="white"
         id="top-nav"
-        className="top-nav-bar paddinglr20 is-invisible">
+        className="top-nav-bar paddinglr20">
         <Link to="/home" className="topnav-main-link">
           Home
         </Link>

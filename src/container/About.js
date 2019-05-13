@@ -9,15 +9,13 @@ class About extends Component {
 
   toggleNavBar() {
     var height = $(window).scrollTop()
-    if (height > 150) {
-      $('#top-nav').addClass('is-visible')
-    } else {
-      $('#top-nav').removeClass('is-visible')
-    }
+    let top = height - 200
+    top = Math.min(top, 0)
+    $('#top-nav').css('top', top)
   }
 
   componentWillUnmount() {
-    $('#top-nav').removeClass('is-visible')
+    $('#top-nav').css('top', -50)
     document.removeEventListener('scroll', this.toggleNavBar)
   }
 
