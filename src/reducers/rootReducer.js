@@ -1,4 +1,3 @@
-import React from 'react'
 import { createStore, combineReducers } from 'redux'
 import * as TextEditor from './TextEditor'
 import * as ImageEditor from './ImageEditor'

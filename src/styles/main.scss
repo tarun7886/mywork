@@ -104,12 +104,7 @@ body {
     background: white;
   }
 }
-%make-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 //ABOUT CONTAINER STYLING
 .about-container {
   color: white;
@@ -157,4 +152,13 @@ body {
       }
     }
   }
+}
+
+.page-not-found-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  height: 50vh;
+  font-size: 24px;
 }

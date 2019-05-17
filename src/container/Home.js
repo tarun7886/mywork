@@ -4,8 +4,9 @@ import _ from 'underscore'
 import ModulesBar from '../component/ModulesBar'
 import TextEditor from '../component/textEditor/index'
 import { Container, Row } from '../../node_modules/react-bootstrap'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ImageEditor from '../component/imageEditor'
+import NotFoundPage from '../component/NotFoundPage'
 
 class Home extends Component {
   constructor() {
@@ -52,14 +53,21 @@ class Home extends Component {
             </div>
             <div className="padding20 module-panel-wrapper">
               <div className="padding20 module-panel">
-                <Route path={`/`} exact component={TextEditor} />
-                <Route path={`/home`} exact component={TextEditor} />
-                <Route path={`/home/text-editor`} component={TextEditor} />
-                <Route
-                  exact
-                  path={'/home/image-editor'}
-                  component={ImageEditor}
-                />
+                <Switch>
+                  <Route path={`/`} exact component={TextEditor} />
+                  <Route path={`/home`} exact component={TextEditor} />
+                  <Route
+                    path={`/home/text-editor`}
+                    exact
+                    component={TextEditor}
+                  />
+                  <Route
+                    exact
+                    path={'/home/image-editor'}
+                    component={ImageEditor}
+                  />
+                  <Route exact path={'/home/*'} component={NotFoundPage} />
+                </Switch>
               </div>
             </div>
           </Row>

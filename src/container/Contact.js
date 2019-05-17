@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-const Contact = props => {
+const Contact = () => {
   return (
     <div>
       <Card>
