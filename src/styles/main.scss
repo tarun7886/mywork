@@ -104,11 +104,29 @@ body {
     background: white;
   }
 }
-
+%make-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 //ABOUT CONTAINER STYLING
 .about-container {
   color: white;
+  .ab-heading {
+    @extend %make-center;
+    text-align: center;
+    font-family: fantasy;
+  }
   .about-content {
+    &-0 {
+      background: gray;
+      background: linear-gradient(
+        to bottom,
+        #f0f2f0,
+        #000c40
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
     &-1 {
       background: #f0f2f0; /* fallback for old browsers */
       background: linear-gradient(
@@ -125,13 +143,10 @@ body {
         #f0f2f0
       ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+    &-0,
     &-1,
     &-2 {
       font-family: Georgia, 'Times New Roman', Times, serif;
-      .ab-heading {
-        text-align: center;
-        font-family: fantasy;
-      }
       .ab-content {
         font-style: italic;
       }

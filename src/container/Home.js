@@ -35,7 +35,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    $('head title')[0].innerText = `Home | Rest In peace`
+    $('head title')[0].innerText = `Home | ${process.env.REACT_APP_NAME}`
   }
 
   render() {

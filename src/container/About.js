@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 class About extends Component {
   componentDidMount() {
-    $('head title')[0].innerText = `About | Rest In Peace`
+    $('head title')[0].innerText = `About | ${process.env.REACT_APP_NAME}`
     document.addEventListener('scroll', this.toggleNavBar)
   }
 
@@ -22,9 +22,35 @@ class About extends Component {
   render() {
     return (
       <div className="about-container">
-        <div className="parallax image-1" />
+        <div className="parallax image-0">
+          <h1 className="ab-heading">About MY APP</h1>
+        </div>
+        <div className="about-content-0 padding30">
+          <div className="row">
+            <div className="col col-sm-3" />
+            <div className="col col-sm-9">
+              <p className="ab-content slide-in-right ">
+                This began as a project to create a text editor for a free lance
+                project that I joined. Then while working on it I realised why
+                shouldn't I document all the things that I have learnt. And what
+                better than documenting it on a real web page. Initialy I was
+                facing problems with desining and stuffs which are not my
+                expertise but quickly I realised it was to document the work and
+                styling is something that can be done afterwards and also I
+                haven't learnt it. With this in mind I added image editor as the
+                new module in it and working on few other things like animation
+                and better control on components
+                <br />
+                If you have anything in mind for a website and want to see it
+                happening then do <a href="/contact"> contact me </a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="parallax image-1">
+          <h1 className="ab-heading">About Creator</h1>
+        </div>
         <div className="about-content-1 padding30">
-          <h1 className="ab-heading">Tarun</h1>
           <div className="row">
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
@@ -50,15 +76,14 @@ class About extends Component {
             </div>
           </div>
         </div>
-        <div className="parallax image-2" />
-        <div className="about-content-2 padding30">
+        <div className="parallax image-2">
           <h1 className="ab-heading">Dream</h1>
+        </div>
+        <div className="about-content-2 padding30">
           <div className="row">
             <div className="col col-sm-9">
               <p className="ab-content slide-in-left">
-                Dream to be the best of the best in every field I step in. It's
-                kind of a dream for future but I would working my ass off to be
-                the best
+                Let it be safe with me untill I achieve it
               </p>
             </div>
             <div className="col col-sm-3" />
