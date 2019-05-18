@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { saveInputText } from '../../actions/TextEditor'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -17,7 +18,15 @@ class TextEditor extends Component {
     })
   }
 
+  componentWillUnmount() {
+    const { saveInputText } = this.props
+    let text = this.oDoc.current.innerHTML
+    saveInputText(text)
+  }
+
   componentDidMount() {
+    const { textEditor } = this.props
+    this.oDoc.current.innerHTML = textEditor.textHtml
     this.sDefTxt = this.oDoc.current.innerHTML
   }
 
@@ -348,9 +357,12 @@ class TextEditor extends Component {
   }
 }
 const mapStateToProps = state => {
-  return state
+  return {
+    textEditor: state.TextEditor,
+  }
 }
+
 export default connect(
   mapStateToProps,
-  {}
+  { saveInputText }
 )(TextEditor)

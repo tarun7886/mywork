@@ -13,7 +13,7 @@ const textEditorState = {
 export const TextEditor = handleActions(
   {
     [SAVE_DATA_DONE]: (state, action) => {
-      let newState = $.extend({}, state, true)
+      let newState = $.extend(true, {}, state)
       newState.textHtml = action.payload
       return newState
     },
