@@ -18,12 +18,18 @@
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    &:focus {
+      outline: none;
+    }
   }
   .text-area-main {
     width: 80%;
     border: 1px solid $primary-blue;
     border-radius: 3px;
+    overflow-y: auto;
     min-height: 200px;
+    max-height: 200px;
+    max-height: 500px;
     position: absolute;
     top: 30px;
     left: 0;
@@ -41,6 +47,9 @@
   img.intLink {
     border: 0;
     height: 30px;
+    &.active {
+      background: $background-gray;
+    }
   }
   #toolBar1 select {
     font-size: 15px;
@@ -99,7 +108,7 @@
   }
   #toolBar2 {
     img.intLink + img.intLink {
-      padding-left: 10px;
+      margin-left: 10px;
     }
   }
 }

@@ -1,13 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import $ from 'jquery'
+import _ from 'underscore'
 import { saveInputText } from '../../actions/TextEditor'
 
 class TextEditor extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      textHtml: '',
+      focusContentEditable: false,
+      styles: [
+        'bold',
+        'italics',
+        'underline',
+        'center-align',
+        'left-align',
+        'right-align',
+      ],
+      styleOptions: {
+        font: '',
+        color: '',
+        size: '',
+      },
+    }
     this._handleInputChange = this._handleInputChange.bind(this)
-    this.oDoc = React.createRef()
     this.sDefTxt = null
   }
 
@@ -20,20 +37,20 @@ class TextEditor extends Component {
 
   componentWillUnmount() {
     const { saveInputText } = this.props
-    let text = this.oDoc.current.innerHTML
+    let text = this.oDoc.innerHTML
     saveInputText(text)
   }
 
   componentDidMount() {
     const { textEditor } = this.props
-    this.oDoc.current.innerHTML = textEditor.textHtml
-    this.sDefTxt = this.oDoc.current.innerHTML
+    this.oDoc.innerHTML = textEditor.textHtml
+    this.sDefTxt = this.oDoc.innerHTML
   }
 
   formatDoc(sCmd, sValue) {
     // var oDoc = document.getElementById('text-preview')
     document.execCommand(sCmd, false, sValue)
-    this.oDoc.current.focus()
+    this.oDoc.focus()
   }
 
   getSelectedString() {
@@ -60,6 +77,49 @@ class TextEditor extends Component {
         '</body></html>'
     )
     oPrntWin.document.close()
+  }
+
+  componentDidUpdate() {
+    this.getSelectedStyles()
+  }
+
+  getSelectedStyles() {
+    var mapping = {
+      B: 'bold',
+      I: 'italics',
+      U: 'underline',
+      center: 'center-align',
+      left: 'left-align',
+      right: 'right-align',
+    }
+    var cursor = window.getSelection()
+    var node = cursor.anchorNode
+    if (_.isNull(node)) {
+      return
+    }
+    this.removeActiveClass()
+    while (true) {
+      if (_.contains(['B', 'I', 'U'], node.parentElement.nodeName)) {
+        $(`#style-${mapping[node.parentElement.nodeName]}`).addClass('active')
+        node = node.parentElement
+      } else {
+        break
+      }
+    }
+  }
+
+  removeActiveClass() {
+    let ar = [
+      'bold',
+      'italics',
+      'underline',
+      'center-align',
+      'left-align',
+      'right-align',
+    ]
+    _.map(ar, value => {
+      $(`#style-${value}`).removeClass('active')
+    })
   }
 
   render() {
@@ -209,6 +269,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Bold"
                 title="Bold"
+                id="style-bold"
                 onClick={() => {
                   this.formatDoc('bold')
                 }}
@@ -218,6 +279,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Italic"
                 title="Italic"
+                id="style-italics"
                 onClick={() => {
                   this.formatDoc('italic')
                 }}
@@ -227,6 +289,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Underline"
                 title="Underline"
+                id="style-underline"
                 onClick={() => {
                   this.formatDoc('underline')
                 }}
@@ -236,6 +299,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Left align"
                 title="Left align"
+                id="style-left-align"
                 onClick={() => {
                   this.formatDoc('justifyleft')
                 }}
@@ -245,6 +309,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Center align"
                 title="Center align"
+                id="style-center-align"
                 onClick={() => {
                   this.formatDoc('justifycenter')
                 }}
@@ -254,6 +319,7 @@ class TextEditor extends Component {
                 className="intLink"
                 alt="Right align"
                 title="Right align"
+                id="style-right-align"
                 onClick={() => {
                   this.formatDoc('justifyright')
                 }}
@@ -348,8 +414,25 @@ class TextEditor extends Component {
         </div>
         <div
           id="text-preview"
-          ref={this.oDoc}
+          ref={c => {
+            this.oDoc = c
+          }}
           className="editable-div padding10"
+          onInput={() => {
+            this.setState({
+              textHtml: this.oDoc.innerHTML,
+            })
+          }}
+          onFocus={() => {
+            this.setState({
+              focusContentEditable: true,
+            })
+          }}
+          onBlur={() => {
+            this.setState({
+              focusContentEditable: false,
+            })
+          }}
           contentEditable={true}
         />
       </div>

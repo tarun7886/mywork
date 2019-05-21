@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions'
 import {
   SAVE_DATA_DONE,
-  SAVE_DATA_INIT,
-  SAVE_DATA_FAIL,
+  // SAVE_DATA_INIT,
+  // SAVE_DATA_FAIL,
 } from '../actions/TextEditor'
 import $ from 'jquery'
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import { Link } from 'react-router-dom'
 
 class About extends Component {
   componentDidMount() {
@@ -9,7 +10,8 @@ class About extends Component {
 
   toggleNavBar() {
     var height = $(window).scrollTop()
-    let top = height - 200
+    // to slow down the speed of nav bar
+    let top = height / 2 - 100
     top = Math.min(top, 0)
     $('#top-nav').css('top', top)
   }
@@ -42,7 +44,7 @@ class About extends Component {
                 and better control on components
                 <br />
                 If you have anything in mind for a website and want to see it
-                happening then do <a href="/contact"> contact me </a>.
+                happening then do <Link to="/contact"> contact me </Link>.
               </p>
             </div>
           </div>

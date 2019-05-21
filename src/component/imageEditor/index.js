@@ -51,8 +51,9 @@ export default class ImageEditor extends Component {
     reader.readAsDataURL(file)
   }
 
-  handleEditing(e, type) {
+  handleEditing(e) {
     const currentValue = parseFloat(e.target.value)
+    const type = e.target.dataset.name
     if (type === 'straighten') {
       let rotate = this.state.rotate
       let previousScale = this.straightenerValue
@@ -251,8 +252,9 @@ function InputRange(props) {
       </div>
       <input
         type="range"
-        name="zoom"
-        onChange={e => func(e, name)}
+        name={name}
+        data-name={name}
+        onChange={e => func(e)}
         min={min}
         max={max}
         step={step}
