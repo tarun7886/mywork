@@ -23,7 +23,10 @@ class TextEditor extends Component {
         color: '',
         size: '',
       },
+      justToUpdateState: false,
     }
+    this.toggleToUpdateState = this.toggleToUpdateState.bind(this)
+    this.getSelectedStyles = this.getSelectedStyles.bind(this)
     this._handleInputChange = this._handleInputChange.bind(this)
     this.sDefTxt = null
   }
@@ -73,7 +76,7 @@ class TextEditor extends Component {
     oPrntWin.document.open()
     oPrntWin.document.write(
       '<!doctype html><html><head><title>Print</title></head><body onload="print();">' +
-        this.oDoc.current.innerHTML +
+        this.oDoc.innerHTML +
         '</body></html>'
     )
     oPrntWin.document.close()
@@ -84,28 +87,39 @@ class TextEditor extends Component {
   }
 
   getSelectedStyles() {
-    var mapping = {
-      B: 'bold',
-      I: 'italics',
-      U: 'underline',
-      center: 'center-align',
-      left: 'left-align',
-      right: 'right-align',
-    }
-    var cursor = window.getSelection()
-    var node = cursor.anchorNode
-    if (_.isNull(node)) {
-      return
-    }
-    this.removeActiveClass()
-    while (true) {
-      if (_.contains(['B', 'I', 'U'], node.parentElement.nodeName)) {
-        $(`#style-${mapping[node.parentElement.nodeName]}`).addClass('active')
-        node = node.parentElement
-      } else {
-        break
+    setTimeout(() => {
+      var mapping = {
+        B: 'bold',
+        I: 'italics',
+        U: 'underline',
+        center: 'center-align',
+        left: 'left-align',
+        right: 'right-align',
       }
-    }
+      var cursor = window.getSelection()
+      var node = cursor.anchorNode
+      if (_.isNull(node)) {
+        return
+      }
+      this.removeActiveClass()
+      while (true) {
+        if (node.nodeName === 'DIV') {
+          if (!_.isEmpty(node.style.textAlign)) {
+            $(`#style-${mapping[node.style.textAlign]}`).addClass('active')
+          }
+          break
+        } else if (
+          _.contains(['B', 'I', 'U', '#text', 'FONT'], node.nodeName)
+        ) {
+          if (node.nodeName !== '#text' && node.nodeName !== 'FONT') {
+            $(`#style-${mapping[node.nodeName]}`).addClass('active')
+          }
+          node = node.parentElement
+        } else {
+          break
+        }
+      }
+    }, 50)
   }
 
   removeActiveClass() {
@@ -122,31 +136,18 @@ class TextEditor extends Component {
     })
   }
 
+  toggleToUpdateState() {
+    this.setState({
+      justToUpdateState: !this.state.justToUpdateState,
+    })
+  }
+
   render() {
     return (
       <div className="text-editor-container">
         <div className="row margin0">
           <div className="col col-sm-10 function-panel ">
             <div id="toolBar1">
-              <div className="selectDiv">
-                <select
-                  onChange={event => {
-                    this.formatDoc('formatblock', event.target.value)
-                  }}
-                  defaultValue="formatting">
-                  <option value="" disabled hidden>
-                    - formatting -
-                  </option>
-                  <option value="h1">Title 1</option>
-                  <option value="h2">Title 2</option>
-                  <option value="h3">Title 3</option>
-                  <option value="h4">Title 4</option>
-                  <option value="h5">Title 5</option>
-                  <option value="h6">Subtitle</option>
-                  <option value="p">Paragraph</option>
-                  <option value="pre">Preformatted</option>
-                </select>
-              </div>
               <div className="selectDiv">
                 <select
                   onChange={event => {
@@ -433,6 +434,9 @@ class TextEditor extends Component {
               focusContentEditable: false,
             })
           }}
+          onKeyDown={this.getSelectedStyles}
+          onKeyPress={this.getSelectedStyles}
+          onMouseDown={this.getSelectedStyles}
           contentEditable={true}
         />
       </div>

@@ -40,14 +40,14 @@ class About extends Component {
           className="parallax image-0"
           data-id="about"
           onClick={this.onScroll}>
-          <h1 className="ab-heading">About MY APP</h1>
+          <h1 className="ab-heading">About John Doe</h1>
         </div>
         <div className="about-content-0 padding30" id="about">
           <div className="row">
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
               <p className="ab-content slide-in-right ">
-                This began as a project to create a text editor for a free lance
+                This began as a project to create a text editor as a free lance
                 project that I joined. Then while working on it I realised why
                 shouldn't I document all the things that I have learnt. And what
                 better than documenting it on a real web page. Initialy I was
@@ -68,7 +68,7 @@ class About extends Component {
           className="parallax image-1"
           data-id="about-creator"
           onClick={this.onScroll}>
-          <h1 className="ab-heading">About Creator</h1>
+          <h1 className="ab-heading">[ SOMETHING ]</h1>
         </div>
         <div className="about-content-1 padding30" id="about-creator">
           <div className="row">
@@ -100,7 +100,7 @@ class About extends Component {
           className="parallax image-2"
           data-id="dream"
           onClick={this.onScroll}>
-          <h1 className="ab-heading">Dream</h1>
+          <h1 className="ab-heading">[ EVERYTHING ]</h1>
         </div>
         <div className="about-content-2 padding30" id="dream">
           <div className="row">
