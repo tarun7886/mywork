@@ -92,7 +92,7 @@ export default class ImageEditor extends Component {
       default:
         width = 0
     }
-    return `linear-gradient(to right, gray 0%,orange ${width}%,#dadada ${width}%,#dadada 100%)`
+    return `linear-gradient(to right, blue 0%,orange ${width}%,#dadada ${width}%,#dadada 100%)`
   }
 
   render() {

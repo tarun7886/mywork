@@ -8,26 +8,41 @@ class About extends Component {
     document.addEventListener('scroll', this.toggleNavBar)
   }
 
+  onScroll(event) {
+    var elem = $(event.currentTarget)
+    var id = elem[0].dataset.id
+    console.log($(`#${id}`).offset().top)
+    $('html, body').animate(
+      {
+        scrollTop: $(`#${id}`).offset().top - 200,
+      },
+      500
+    )
+  }
+
   toggleNavBar() {
     var height = $(window).scrollTop()
     // to slow down the speed of nav bar
-    let top = height / 2 - 100
+    let top = height / 2 - 120
     top = Math.min(top, 0)
     $('#top-nav').css('top', top)
   }
 
   componentWillUnmount() {
-    $('#top-nav').css('top', -50)
+    $('#top-nav').css('top', -60)
     document.removeEventListener('scroll', this.toggleNavBar)
   }
 
   render() {
     return (
       <div className="about-container">
-        <div className="parallax image-0">
+        <div
+          className="parallax image-0"
+          data-id="about"
+          onClick={this.onScroll}>
           <h1 className="ab-heading">About MY APP</h1>
         </div>
-        <div className="about-content-0 padding30">
+        <div className="about-content-0 padding30" id="about">
           <div className="row">
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
@@ -49,10 +64,13 @@ class About extends Component {
             </div>
           </div>
         </div>
-        <div className="parallax image-1">
+        <div
+          className="parallax image-1"
+          data-id="about-creator"
+          onClick={this.onScroll}>
           <h1 className="ab-heading">About Creator</h1>
         </div>
-        <div className="about-content-1 padding30">
+        <div className="about-content-1 padding30" id="about-creator">
           <div className="row">
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
@@ -78,14 +96,67 @@ class About extends Component {
             </div>
           </div>
         </div>
-        <div className="parallax image-2">
+        <div
+          className="parallax image-2"
+          data-id="dream"
+          onClick={this.onScroll}>
           <h1 className="ab-heading">Dream</h1>
         </div>
-        <div className="about-content-2 padding30">
+        <div className="about-content-2 padding30" id="dream">
           <div className="row">
             <div className="col col-sm-9">
               <p className="ab-content slide-in-left">
                 Let it be safe with me untill I achieve it
+                <br />
+                Full Stack Developer | started with PDF parsing then to query
+                optimization, creating analytics data from the tracking data
+                getting new info from tracking data and then personalize
+                feedback to users. Then I have made a photo editor tool for
+                Aspire by altering one of the react image editing package also I
+                have made our website ADA compliant. I have also been an active
+                coder during my college days. During my intern at PwC, I created
+                a virtual reality application using Unity 3D for retail
+                companies data visualization and management as a proof of
+                concept. <br />
+                Currently, my development languages are PHP and JavaScript.
+                Libraries I have worked on are Laravel, React, Unity - 3D. In
+                college days I have also coded in Python, Java, C++. As an
+                aspirant coder, I keep looking forward to challenging tasks and
+                problem statements.
+                <br />I like to learn by getting hands-on and I am always up for
+                learning and face new challenges. Full Stack Developer | started
+                with PDF parsing then to query optimization, creating analytics
+                data from the tracking data getting new info from tracking data
+                and then personalize feedback to users. Then I have made a photo
+                editor tool for Aspire by altering one of the react image
+                editing package also I have made our website ADA compliant. I
+                have also been an active coder during my college days. During my
+                intern at PwC, I created a virtual reality application using
+                Unity 3D for retail companies data visualization and management
+                as a proof of concept. <br />
+                Currently, my development languages are PHP and JavaScript.
+                Libraries I have worked on are Laravel, React, Unity - 3D. In
+                college days I have also coded in Python, Java, C++. As an
+                aspirant coder, I keep looking forward to challenging tasks and
+                problem statements.
+                <br />I like to learn by getting hands-on and I am always up for
+                learning and face new challenges. Full Stack Developer | started
+                with PDF parsing then to query optimization, creating analytics
+                data from the tracking data getting new info from tracking data
+                and then personalize feedback to users. Then I have made a photo
+                editor tool for Aspire by altering one of the react image
+                editing package also I have made our website ADA compliant. I
+                have also been an active coder during my college days. During my
+                intern at PwC, I created a virtual reality application using
+                Unity 3D for retail companies data visualization and management
+                as a proof of concept. <br />
+                Currently, my development languages are PHP and JavaScript.
+                Libraries I have worked on are Laravel, React, Unity - 3D. In
+                college days I have also coded in Python, Java, C++. As an
+                aspirant coder, I keep looking forward to challenging tasks and
+                problem statements.
+                <br />I like to learn by getting hands-on and I am always up for
+                learning and face new challenges.
               </p>
             </div>
             <div className="col col-sm-3" />
