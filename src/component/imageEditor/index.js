@@ -15,11 +15,13 @@ export default class ImageEditor extends Component {
       brightness: 1,
       contrast: 1,
       opacity: 1,
-      saturate: 0,
+      saturate: 1,
+      position: { x: 0.5, y: 0.5 },
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
     this.handleEditing = this.handleEditing.bind(this)
+    this.handlePositionChange = this.handlePositionChange.bind(this)
     this.straightenerValue = 0
   }
 
@@ -51,6 +53,10 @@ export default class ImageEditor extends Component {
     reader.readAsDataURL(file)
   }
 
+  handlePositionChange(position) {
+    this.setState({ position })
+  }
+
   handleEditing(e) {
     const currentValue = parseFloat(e.target.value)
     const type = e.target.dataset.name
@@ -72,7 +78,7 @@ export default class ImageEditor extends Component {
     let width = 0
     switch (element) {
       case 'zoom':
-        width = ((parseFloat(this.state.zoom) - 0.5) / 1.5) * 100
+        width = ((parseFloat(this.state.zoom) - 1) / 2) * 100
         break
       case 'straighten':
         width = ((parseFloat(this.straightenerValue) + 45) / 90) * 100
@@ -92,7 +98,7 @@ export default class ImageEditor extends Component {
       default:
         width = 0
     }
-    return `linear-gradient(to right, blue 0%,orange ${width}%,#dadada ${width}%,#dadada 100%)`
+    return `linear-gradient(to right, blue 0%,red ${width}%,#dadada ${width}%,#dadada 100%)`
   }
 
   render() {
@@ -110,8 +116,8 @@ export default class ImageEditor extends Component {
     let cropValues = [
       {
         name: 'zoom',
-        min: 0.5,
-        max: 2,
+        min: 1,
+        max: 3,
         step: 0.01,
         defaultValue: 1.2,
         func: this.handleEditing,
@@ -165,24 +171,34 @@ export default class ImageEditor extends Component {
         min: 0.5,
         max: 2,
         step: 0.01,
-        defaultValue: 0,
+        defaultValue: 1,
         func: this.handleEditing,
         value: this.state.saturate,
         style: this.getSliderBackgroundStyle('saturate'),
       },
     ]
+    let reactAvatorCanvasFilter = `brightness(${
+      this.state.brightness
+    }) contrast(${this.state.contrast}) opacity(${
+      this.state.opacity
+    }) saturate(${this.state.saturate})`
     return (
       <div className="image-editor-wrapper">
         <div className="row">
           <div className="col col-sm-6">
             <ReactAvatarEditor
+              className="reactAvatorCanvasStyle"
               image={this.state.imageInput}
               border={[150, 50]}
               width={300}
               height={300}
               filters={this.state.canvasFilter}
-              borderRadius={75}
+              borderRadius={150}
+              position={this.state.position}
+              onPositionChange={this.handlePositionChange}
               scale={this.state.zoom}
+              rotate={this.state.rotate}
+              filters={reactAvatorCanvasFilter}
             />
             <form action="" ref={c => (this.inputForm = c)}>
               <input
