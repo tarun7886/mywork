@@ -1,90 +1,55 @@
 .text-editor-wrapper {
+  font-family: Georgia;
   .text-editor-container {
-    width: 1000px;
+    width: 75%;
     text-align: left;
     position: relative;
     margin: 0 auto;
   }
   .function-panel {
-    border: 1px solid $primary-blue;
+    border: 1px solid $dark-gray;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    width: 100%;
+    .toolbar-2 {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      .tool-icon {
+        padding: 5px;
+        line-height: 10px;
+        border-radius: 3px;
+        &:hover,
+        &.active {
+          background: $background-gray;
+        }
+      }
+    }
   }
   .editable-div {
     border-radius: 3px;
-    border: 1px solid $primary-blue;
-    width: 83.33333%;
+    border: 1px solid $dark-gray;
+    width: 100%;
     min-height: 200px;
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    color: #555;
     &:focus {
       outline: none;
     }
-  }
-  .text-area-main {
-    width: 80%;
-    border: 1px solid $primary-blue;
-    border-radius: 3px;
-    overflow-y: auto;
-    min-height: 200px;
-    max-height: 200px;
-    max-height: 500px;
-    position: absolute;
-    top: 30px;
-    left: 0;
-  }
-  .editing-tool-bar {
-    margin: 0 20px;
-    .panel-button {
-      background: $background-gray;
-      border-radius: 3px;
-    }
-  }
-  .intLink {
-    cursor: pointer;
-  }
-  img.intLink {
-    border: 0;
-    height: 30px;
-    &.active {
-      background: $background-gray;
+    &:empty:before {
+      content: attr(placeholder);
+      color: #aaa;
     }
   }
   #toolBar1 select {
     font-size: 15px;
   }
-  #textBox {
-    width: 540px;
-    height: 200px;
-    border: 1px #000000 solid;
-    padding: 12px;
-    overflow: scroll;
-  }
-  #textBox #sourceText {
-    padding: 0;
-    margin: 0;
-    min-width: 498px;
-    min-height: 200px;
-  }
-  #editMode label {
-    cursor: pointer;
-  }
   #toolBar1 {
     .selectDiv {
       position: relative;
       display: inline-block;
-    }
-    .selectDiv:after {
-      content: '>';
-      transform: rotate(90deg);
-      color: #0ebeff;
-      right: 11px;
-      top: 5px;
-      padding: 6px 5px;
-      border-bottom: 1px solid #0ebeff;
-      position: absolute;
-      pointer-events: none;
     }
 
     /* IE11 hide native button (thanks Matt!) */
@@ -106,9 +71,32 @@
       border: 1px solid #0ebeff;
     }
   }
-  #toolBar2 {
-    img.intLink + img.intLink {
-      margin-left: 10px;
-    }
+}
+
+.preview-background {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  .preview-tile {
+    height: 50px;
+    width: 50px;
   }
+}
+
+// Background styles
+.red-white {
+  background: linear-gradient(to right, red, white);
+}
+.blue-white {
+  background: linear-gradient(to right, blue, white);
+}
+.green-white {
+  background: linear-gradient(to right, green, white);
+}
+.yellow-white {
+  background: linear-gradient(to right, yellow, white);
+}
+.orange-white {
+  background: linear-gradient(to right, orange, white);
 }

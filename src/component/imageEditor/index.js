@@ -9,7 +9,6 @@ export default class ImageEditor extends Component {
     super()
     this.state = {
       imageInput: null,
-      canvasFilter: '',
       zoom: 1.2,
       rotate: 0,
       brightness: 1,
@@ -192,7 +191,6 @@ export default class ImageEditor extends Component {
               border={[150, 50]}
               width={300}
               height={300}
-              filters={this.state.canvasFilter}
               borderRadius={150}
               position={this.state.position}
               onPositionChange={this.handlePositionChange}

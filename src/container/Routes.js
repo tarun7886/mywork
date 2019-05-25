@@ -6,21 +6,26 @@ import Contact from './Contact'
 import TopNavBar from '../component/TopNavBar'
 import TopBanner from '../component/TopBanner'
 import NotFoundPage from '../component/NotFoundPage'
+import MainFooter from '../component/Footer'
 
 class Routes extends Component {
+  shouldComponentUpdate() {
+    return true
+  }
   render() {
     return (
       <Router>
         <TopBanner />
         <TopNavBar />
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path="/error/404" exact component={NotFoundPage} />
+          <Route path="/" exact component={Home} />
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="*" exact={true} component={NotFoundPage} />
         </Switch>
+        <MainFooter />
       </Router>
     )
   }

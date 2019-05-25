@@ -1,9 +1,11 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 const NotFoundPage = ({ location }) => {
   let redirect =
-    location.pathname === '/error/404' ? null : <Redirect to="/error/404" />
+    location.pathname === '/error/404'
+      ? null
+      : withRouter(<Redirect to="/error/404" />)
   return (
     <div className="page-not-found-container">
       {redirect}
@@ -15,4 +17,4 @@ const NotFoundPage = ({ location }) => {
   )
 }
 
-export default NotFoundPage
+export default withRouter(NotFoundPage)

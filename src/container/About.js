@@ -29,7 +29,7 @@ class About extends Component {
   }
 
   componentWillUnmount() {
-    $('#top-nav').css('top', -60)
+    $('#top-nav').css('top', -100)
     document.removeEventListener('scroll', this.toggleNavBar)
   }
 
