@@ -9,9 +9,6 @@ import NotFoundPage from '../component/NotFoundPage'
 import MainFooter from '../component/Footer'
 
 class Routes extends Component {
-  shouldComponentUpdate() {
-    return true
-  }
   render() {
     return (
       <Router>
