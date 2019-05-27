@@ -73,14 +73,22 @@
   }
 }
 
-.preview-background {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
-  align-items: center;
-  .preview-tile {
-    height: 50px;
-    width: 50px;
+.text-preview-modal {
+  .modal-body {
+    min-height: 200px;
+  }
+  .modal-footer {
+    margin-top: 0.5rem;
+    &.preview-background {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-around;
+      align-items: center;
+      .preview-tile {
+        height: 50px;
+        width: 50px;
+      }
+    }
   }
 }
 

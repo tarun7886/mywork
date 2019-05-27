@@ -22,7 +22,7 @@ class Routes extends Component {
           <Route path="/contact" component={Contact} />
           <Route path="*" exact={true} component={NotFoundPage} />
         </Switch>
-        <MainFooter />
+        {/* <MainFooter /> */}
       </Router>
     )
   }

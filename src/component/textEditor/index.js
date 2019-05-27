@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'underscore'
 import TextArea from './TextArea'
 import PreviewModal from './PreviewModal'
 
@@ -32,6 +33,7 @@ export default class TextEditor extends Component {
         <div className="te-control-panel margintb10 align-center">
           <button
             className="btn btn-210 btn-primary marginlr10 align-center"
+            disabled={_.isEmpty(this.state.innerHtml)}
             onClick={this.togglePreview}>
             Preview
           </button>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class TopNavBar extends Component {
   render() {
     return (
-      <div id="top-nav" className="top-nav-bar padding10 paddinglr20 shadow">
+      <div id="top-nav" className="top-nav-bar paddinglr20 shadow">
         <div className="topnav topnav-left">
           <Link to="/home" className="topnav-link-home">
             Home

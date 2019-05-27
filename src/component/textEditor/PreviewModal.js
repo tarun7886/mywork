@@ -1,28 +1,38 @@
 import React, { Component } from 'react'
 import { Modal, ModalBody, ModalFooter, ModalTitle } from 'react-bootstrap'
 import _ from 'underscore'
-import $ from 'jquery'
+import classNames from 'classnames'
 
 class PreviewModal extends Component {
+  constructor() {
+    super()
+    this.state = {
+      backgroundClass: '',
+    }
+    this.handleBackgroundSelect = this.handleBackgroundSelect.bind(this)
+  }
   handleBackgroundSelect(event) {
-    let backgroundClass = event.currentTarget.classList[1]
-    $('#preview-main')[0].className = `modal-body ${backgroundClass}`
+    let dataset = event.currentTarget.dataset
+    let backgroundClass = dataset.background
+    this.setState({
+      backgroundClass,
+    })
   }
   render() {
     const { showModal, closeModal, innerHtml } = this.props
     let tiles = []
     let colors = [
       'red-white',
-      'blue-white',
+      'orange-white',
       'green-white',
       'yellow-white',
-      'orange-white',
+      'blue-white',
     ]
-
     _.map(colors, (value, key) => {
       tiles.push(
         <div
           className={`preview-tile ${value}`}
+          data-background={value}
           key={key}
           onClick={this.handleBackgroundSelect}
         />
@@ -32,17 +42,22 @@ class PreviewModal extends Component {
       <Modal
         bsPrefix="modal"
         show={showModal}
-        size={1000}
+        autoFocus={true}
+        enforceFocus={true}
+        restoreFocus={true}
+        dialogClassName="text-preview-modal"
+        size="lg"
         onHide={closeModal}
         restoreFocus={true}>
-        <ModalTitle bsPrefix="modal-header modal-text-preview-header">
+        <ModalTitle bsPrefix="modal-header">
           Preview
           <button className="text-button" onClick={closeModal}>
-            X
+            <span className="material-icons">close</span>
           </button>
         </ModalTitle>
         <ModalBody
           id="preview-main"
+          bsPrefix={classNames('modal-body', this.state.backgroundClass)}
           dangerouslySetInnerHTML={{
             __html: innerHtml,
           }}

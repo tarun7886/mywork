@@ -107,9 +107,9 @@ class TextEditor extends Component {
   }
 
   setHeightAt400() {
-    var pussy = this.oDoc
-    if (!_.isUndefined(pussy)) {
-      if (pussy.scrollHeight > 400) {
+    var textArea = this.oDoc
+    if (!_.isUndefined(textArea)) {
+      if (textArea.scrollHeight > 400) {
         this.oDoc.setAttribute('style', 'height : 400px ; overflow-y : scroll;')
         this.setState({
           textAreaHeightSet: true,
@@ -208,6 +208,7 @@ class TextEditor extends Component {
               })}
               <button
                 className="text-button tool-icon"
+                title="create link"
                 onClick={() => {
                   var sLnk = prompt('Write the URL here', 'http://')
                   if (sLnk && sLnk !== '' && sLnk !== 'http://') {
@@ -218,6 +219,7 @@ class TextEditor extends Component {
               </button>
               <button
                 className="text-button tool-icon"
+                title="print"
                 onClick={() => this.printDoc()}>
                 <span className="material-icons"> print </span>
               </button>
@@ -276,8 +278,8 @@ const ColorInput = ({ name, icon, func, format }) => {
       onChange={e => format(name, e.target.value)}
     />,
     <button
+      title={name}
       className="text-button tool-icon"
-      alt="something"
       data-id={`style-${name}`}
       onClick={func}>
       <span className="material-icons"> {icon} </span>

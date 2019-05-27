@@ -13,6 +13,7 @@
     "react-avatar-editor": "github:tarun7886/react-avatar-editor#build",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
+    "react-modal-bootstrap": "^1.1.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
