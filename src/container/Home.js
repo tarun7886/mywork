@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import _ from 'underscore'
-import ModulesBar from '../component/ModulesBar'
+import LeftNavigation from '../component/LeftNav/LeftNavigation'
 import TextEditor from '../component/textEditor/index'
 import { Container, Row } from '../../node_modules/react-bootstrap'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -45,7 +45,7 @@ class Home extends Component {
         <Container fluid>
           <Row>
             <div className="modules-left-bar padding0">
-              <ModulesBar
+              <LeftNavigation
                 modules={this.state.modules}
                 activeModule={this.state.activeModule}
                 activateModule={this.activateModule}
@@ -56,16 +56,7 @@ class Home extends Component {
                 <Switch>
                   <Route path={`/`} exact component={TextEditor} />
                   <Route path={`/home`} exact component={TextEditor} />
-                  <Route
-                    path={`/home/text-editor`}
-                    exact
-                    component={TextEditor}
-                  />
-                  <Route
-                    exact
-                    path={'/home/image-editor'}
-                    component={ImageEditor}
-                  />
+
                   <Route exact path={'/home/*'} component={NotFoundPage} />
                 </Switch>
               </div>

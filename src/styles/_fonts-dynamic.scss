@@ -1,0 +1,5 @@
+@for $i from 10 through 30 {
+  .f#{$i} {
+    font-size: $i;
+  }
+}

@@ -342,3 +342,37 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+%center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/******** CLIP WORD *********/
+.word--ellipsis {
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+.word--clip {
+  @extend .word--ellipsis;
+  text-overflow: clip;
+}
+@mixin ellipsis_nl_np($nl, $np) {
+  @extend .word--ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $nl; /* number of lines to show */
+  line-height: #{$np}px;
+  max-height: #{$nl * $np}px;
+  width: auto;
+  white-space: normal;
+}

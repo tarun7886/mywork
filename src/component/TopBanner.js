@@ -6,13 +6,13 @@ class TopBanner extends Component {
     return (
       <div className="banner-container" id="top-banner">
         <Link to="/home">
-          <img src="" alt="Home" />
+          <span className="material-icons">home</span>
         </Link>
         <Link to="/about">
-          <img src="" alt="About" />
+          <span className="material-icons">about</span>
         </Link>
         <Link to="/contact">
-          <img src="" alt="Contact" />
+          <span className="material-icons">contact</span>
         </Link>
       </div>
     )

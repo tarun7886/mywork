@@ -1,9 +1,14 @@
 @import 'variables';
 @import 'global-constants';
+@import 'fonts-dynamic';
+@import 'header';
 @import 'text-editor';
 @import 'image-editor';
 @import 'small-module';
 @import 'dynamic-div';
+@import 'movable-div';
+@import 'tambola';
+@import 'rotating-navigation';
 
 /* The default outline styling, for greatest accessibility. */
 /* You can skip this to just use the browser's defaults. */
@@ -150,4 +155,202 @@ body {
 .footer-container {
   position: sticky;
   bottom: 0;
+}
+
+.left-navigation-bar {
+  position: fixed;
+  top: $header-height;
+  bottom: 0;
+  padding: 0px 7px 0 0;
+  z-index: 10;
+  display: inline-block;
+  vertical-align: top;
+  overflow: scroll;
+  .left-left-nav {
+    overflow: auto;
+    transition: width 200ms ease-in;
+    height: 100%;
+    width: calc(#{$left-nav-bar-close-width} - 7px);
+    background: white;
+    border-radius: 0 3px 3px 0;
+    &-header {
+      transition: all 200ms ease-in;
+      font-size: 20px;
+      height: 85px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      &-icon {
+        display: flex;
+        margin-left: 20px;
+        transition: margin-left 200ms ease-in;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+      }
+      &-content {
+        visibility: hidden;
+        height: 100%;
+        width: 100%;
+        font-size: 0;
+        opacity: 0;
+        padding: 20px;
+        padding-bottom: 30px;
+        font-size: 16px;
+        color: $text-color;
+        font-weight: 600;
+        position: relative;
+        .floating-pin-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          transform: rotate(45deg);
+          color: whitesmoke;
+          background: transparent;
+          padding: 0;
+        }
+        & > div {
+          @include ellipsis_nl_np(2, 20);
+        }
+      }
+      &-score {
+        transition: all 200ms ease-in;
+        visibility: hidden;
+        padding: 5px 10px;
+        font-size: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: white;
+        border-top-left-radius: 3px;
+        &.Low {
+          background: $brand-danger;
+        }
+        &.Medium {
+          background: $brand-warning;
+        }
+        &.High {
+          background: $brand-success;
+        }
+      }
+    }
+    &-item {
+      transition: all 200ms ease-in;
+      width: 100%;
+      margin: 5px 0;
+      height: 40px;
+      font-size: 24px;
+      color: #808080;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 10px;
+      background-color: transparent;
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+    &-link {
+      &.active {
+        .left-left-nav-item {
+          color: $brand-primary;
+          .left-left-nav-icon-container {
+            background: transparentize($brand-primary, 0.9);
+          }
+        }
+      }
+    }
+    &-icon-container {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 0;
+      flex-shrink: 0;
+      font-size: 20px;
+      .icon-training {
+        font-size: 24px;
+      }
+    }
+    &-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    &-text {
+      display: inline-flex;
+      overflow: hidden;
+      font-weight: 600;
+      transition: font-size 200ms, opacity 200ms, ease-in;
+      font-size: 0;
+      opacity: 0;
+      white-space: nowrap;
+    }
+  }
+  .left-left-nav:hover,
+  .left-left-nav.open {
+    width: $left-nav-bar-open-width;
+    box-shadow: 0 0 10px $light-gray;
+    .left-left-nav-item {
+      padding-left: 20px;
+      &.left-left-module {
+        padding-left: 50px;
+      }
+      .left-left-nav-text {
+        font-size: 14px;
+        opacity: 1;
+      }
+    }
+    &-link {
+      &.active,
+      &:hover {
+        background-color: transparentize($brand-primary, 0.9);
+        .left-left-nav-icon-container {
+          transition: all 200ms ease-in;
+          background-color: transparent;
+        }
+      }
+    }
+    .left-left-nav-header {
+      background-color: #f1faff;
+      &-icon {
+        margin-left: -40px;
+      }
+      &-content {
+        visibility: visible;
+        font-size: 14px;
+        opacity: 1;
+      }
+      &-score {
+        visibility: visible;
+        font-size: 12px;
+      }
+    }
+  }
+  .left-left-nav.open {
+    .floating-pin-btn {
+      color: white;
+      font-weight: 600;
+    }
+  }
+}
+
+.layout {
+  position: relative;
+  &-workspace {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    margin-left: $left-nav-bar-close-width;
+    bottom: 0;
+    overflow: scroll;
+    transition: all 100ms ease-in;
+    &.left-nav-pinned {
+      margin-left: $left-nav-bar-open-width;
+    }
+  }
 }
