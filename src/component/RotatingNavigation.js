@@ -77,13 +77,17 @@ const mixin = (itemCount, show = false) => {
 
 const OuterCircle = Styled.div`
 		position: fixed;
-		// opacity: ${({ navigationOpen }) => (navigationOpen ? 1 : 0)};
+		z-index: 1000;
+		opacity: ${({ navigationOpen }) => (navigationOpen ? 1 : 0)};
 		top: calc(50% - ${({ navigationOpen }) => (navigationOpen ? '200px' : '0px')});
 		left: calc(50% - ${({ navigationOpen }) => (navigationOpen ? '200px' : '0px')});
 		height: ${({ navigationOpen }) => (navigationOpen ? '400px' : '5px')};
 		width: ${({ navigationOpen }) => (navigationOpen ? '400px' : '5px')};
 		border: 5px solid #0075cb;
-		transition: height 500ms ease-in, width 500ms ease-in, top 500ms ease-in, left 500ms ease-in; 
+		transition: height 500ms ease-in, opacity ${({ navigationOpen }) =>
+      navigationOpen
+        ? '200ms'
+        : '500ms'} ease-out , width 500ms ease-in, top 500ms ease-in, left 500ms ease-in; 
 		border-radius: 50%;
 `
 
