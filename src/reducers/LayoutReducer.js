@@ -1,10 +1,9 @@
 import { handleActions } from 'redux-actions'
+import { getLocalVariable } from '../services/helpers'
 import $ from 'jquery'
 
 const initialState = {
-  leftNavPinned: localStorage.getItem('pinned_left_nav')
-    ? localStorage.getItem('pinned_left_nav')
-    : false,
+  leftNavPinned: getLocalVariable('pinned_left_nav', false),
 }
 export const LayoutReducer = handleActions(
   {

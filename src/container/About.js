@@ -47,19 +47,16 @@ class About extends Component {
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
               <p className="ab-content slide-in-right ">
-                This began as a project to create a text editor as a free lance
-                project that I joined. Then while working on it I realised why
-                shouldn't I document all the things that I have learnt. And what
-                better than documenting it on a real web page. Initialy I was
-                facing problems with desining and stuffs which are not my
-                expertise but quickly I realised it was to document the work and
-                styling is something that can be done afterwards and also I
-                haven't learnt it. With this in mind I added image editor as the
-                new module in it and working on few other things like animation
-                and better control on components
-                <br />
-                If you have anything in mind for a website and want to see it
-                happening then do <Link to="/contact"> contact me </Link>.
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
               </p>
             </div>
           </div>
@@ -75,23 +72,27 @@ class About extends Component {
             <div className="col col-sm-3" />
             <div className="col col-sm-9">
               <p className="ab-content slide-in-right ">
-                Full Stack Developer | started with PDF parsing then to query
-                optimization, creating analytics data from the tracking data
-                getting new info from tracking data and then personalize
-                feedback to users. Then I have made a photo editor tool for
-                Aspire by altering one of the react image editing package also I
-                have made our website ADA compliant. I have also been an active
-                coder during my college days. During my intern at PwC, I created
-                a virtual reality application using Unity 3D for retail
-                companies data visualization and management as a proof of
-                concept. <br />
-                Currently, my development languages are PHP and JavaScript.
-                Libraries I have worked on are Laravel, React, Unity - 3D. In
-                college days I have also coded in Python, Java, C++. As an
-                aspirant coder, I keep looking forward to challenging tasks and
-                problem statements.
-                <br />I like to learn by getting hands-on and I am always up for
-                learning and face new challenges.
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old. Richard McClintock, a
+                Latin professor at Hampden-Sydney College in Virginia, looked up
+                one of the more obscure Latin words, consectetur, from a Lorem
+                Ipsum passage, and going through the cites of the word in
+                classical literature, discovered the undoubtable source. Lorem
+                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
+                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+                written in 45 BC. This book is a treatise on the theory of
+                ethics, very popular during the Renaissance. The first line of
+                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+                in section 1.10.32.
+                <br />
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old.
+                <br />
+                This book is a treatise on the theory of ethics, very popular
+                during the Renaissance. The first line of Lorem Ipsum, "Lorem
+                ipsum dolor sit amet..", comes from a line in section 1.10.32.
               </p>
             </div>
           </div>
@@ -106,57 +107,19 @@ class About extends Component {
           <div className="row">
             <div className="col col-sm-9">
               <p className="ab-content slide-in-left">
-                Let it be safe with me untill I achieve it
-                <br />
-                Full Stack Developer | started with PDF parsing then to query
-                optimization, creating analytics data from the tracking data
-                getting new info from tracking data and then personalize
-                feedback to users. Then I have made a photo editor tool for
-                Aspire by altering one of the react image editing package also I
-                have made our website ADA compliant. I have also been an active
-                coder during my college days. During my intern at PwC, I created
-                a virtual reality application using Unity 3D for retail
-                companies data visualization and management as a proof of
-                concept. <br />
-                Currently, my development languages are PHP and JavaScript.
-                Libraries I have worked on are Laravel, React, Unity - 3D. In
-                college days I have also coded in Python, Java, C++. As an
-                aspirant coder, I keep looking forward to challenging tasks and
-                problem statements.
-                <br />I like to learn by getting hands-on and I am always up for
-                learning and face new challenges. Full Stack Developer | started
-                with PDF parsing then to query optimization, creating analytics
-                data from the tracking data getting new info from tracking data
-                and then personalize feedback to users. Then I have made a photo
-                editor tool for Aspire by altering one of the react image
-                editing package also I have made our website ADA compliant. I
-                have also been an active coder during my college days. During my
-                intern at PwC, I created a virtual reality application using
-                Unity 3D for retail companies data visualization and management
-                as a proof of concept. <br />
-                Currently, my development languages are PHP and JavaScript.
-                Libraries I have worked on are Laravel, React, Unity - 3D. In
-                college days I have also coded in Python, Java, C++. As an
-                aspirant coder, I keep looking forward to challenging tasks and
-                problem statements.
-                <br />I like to learn by getting hands-on and I am always up for
-                learning and face new challenges. Full Stack Developer | started
-                with PDF parsing then to query optimization, creating analytics
-                data from the tracking data getting new info from tracking data
-                and then personalize feedback to users. Then I have made a photo
-                editor tool for Aspire by altering one of the react image
-                editing package also I have made our website ADA compliant. I
-                have also been an active coder during my college days. During my
-                intern at PwC, I created a virtual reality application using
-                Unity 3D for retail companies data visualization and management
-                as a proof of concept. <br />
-                Currently, my development languages are PHP and JavaScript.
-                Libraries I have worked on are Laravel, React, Unity - 3D. In
-                college days I have also coded in Python, Java, C++. As an
-                aspirant coder, I keep looking forward to challenging tasks and
-                problem statements.
-                <br />I like to learn by getting hands-on and I am always up for
-                learning and face new challenges.
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form, by
+                injected humour, or randomised words which don't look even
+                slightly believable. If you are going to use a passage of Lorem
+                Ipsum, you need to be sure there isn't anything embarrassing
+                hidden in the middle of text. All the Lorem Ipsum generators on
+                the Internet tend to repeat predefined chunks as necessary,
+                making this the first true generator on the Internet. It uses a
+                dictionary of over 200 Latin words, combined with a handful of
+                model sentence structures, to generate Lorem Ipsum which looks
+                reasonable. The generated Lorem Ipsum is therefore always free
+                from repetition, injected humour, or non-characteristic words
+                etc.
               </p>
             </div>
             <div className="col col-sm-3" />

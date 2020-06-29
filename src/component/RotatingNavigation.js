@@ -122,6 +122,7 @@ class RotatingNavigation extends React.Component {
       left: undefined,
       dialX: undefined,
       dialY: undefined,
+      callAction: true,
     }
   }
 

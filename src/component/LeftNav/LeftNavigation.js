@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink, withRouter } from 'react-router-dom'
 import { IconButton, Icon } from '@material-ui/core/'
+import MenuIcon from '@material-ui/icons/Menu'
 import { toggleLeftNav } from '../../actions/LayoutActions'
 import _ from 'underscore'
 
@@ -36,7 +37,7 @@ const NavigationBar = ({ isOpen, toggleLeftNav }) => {
       <div className={`left-left-nav ${isOpen ? 'open' : ''}`}>
         <div className="left-left-nav-header">
           <div className="left-left-nav-header-icon">
-            <span className="icon-hamburger"></span>
+            <MenuIcon fontSize="large" />
           </div>
           <div className="left-left-nav-header-content">
             <div>Tarun Jain</div>

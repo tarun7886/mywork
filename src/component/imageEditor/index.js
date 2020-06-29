@@ -3,6 +3,7 @@ import $ from 'jquery'
 import _ from 'underscore'
 import classNames from 'classnames'
 import ReactAvatarEditor from 'react-avatar-editor'
+import { Button } from '@material-ui/core'
 
 export default class ImageEditor extends Component {
   constructor() {
@@ -17,6 +18,7 @@ export default class ImageEditor extends Component {
       saturate: 1,
       position: { x: 0.5, y: 0.5 },
     }
+    this.canvasRef = null
     this.handleInput = this.handleInput.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
     this.handleEditing = this.handleEditing.bind(this)
@@ -33,6 +35,13 @@ export default class ImageEditor extends Component {
     })
   }
 
+  downloadImage() {
+    var link = document.createElement('a')
+    link.download = 'filename.png'
+    link.href = this.canvasRef.getImage().toDataURL('image/png')
+    link.click()
+  }
+
   handleFileChange(dataUri) {
     this.setState({
       imageInput: dataUri,
@@ -46,7 +55,7 @@ export default class ImageEditor extends Component {
   handleInput(event) {
     var reader = new FileReader()
     var file = event.target.files[0]
-    reader.onload = function(img) {
+    reader.onload = function (img) {
       this.handleFileChange(img.target.result)
     }.bind(this)
     reader.readAsDataURL(file)
@@ -176,16 +185,13 @@ export default class ImageEditor extends Component {
         style: this.getSliderBackgroundStyle('saturate'),
       },
     ]
-    let reactAvatorCanvasFilter = `brightness(${
-      this.state.brightness
-    }) contrast(${this.state.contrast}) opacity(${
-      this.state.opacity
-    }) saturate(${this.state.saturate})`
+    let reactAvatorCanvasFilter = `brightness(${this.state.brightness}) contrast(${this.state.contrast}) opacity(${this.state.opacity}) saturate(${this.state.saturate})`
     return (
       <div className="image-editor-wrapper">
         <div className="row">
           <div className="col col-sm-6">
             <ReactAvatarEditor
+              ref={(el) => (this.canvasRef = el)}
               className="reactAvatorCanvasStyle"
               image={this.state.imageInput}
               border={[150, 50]}
@@ -198,24 +204,29 @@ export default class ImageEditor extends Component {
               rotate={this.state.rotate}
               filters={reactAvatorCanvasFilter}
             />
-            <form action="" ref={c => (this.inputForm = c)}>
+            <form action="" ref={(c) => (this.inputForm = c)}>
               <input
                 type="file"
                 accept="image/*"
                 name="image"
                 onChange={this.handleInput}
-                ref={c => (this.imageInputRef = c)}
+                ref={(c) => (this.imageInputRef = c)}
                 id="image-input"
                 className="display-none"
               />
             </form>
             <div className="align-center">{UploadButton}</div>
+            <div className="align-center">
+              <Button contained onClick={this.downloadImage.bind(this)}>
+                Download Image
+              </Button>
+            </div>
           </div>
           <div className="col col-sm-6">
             <div className="img-panel-crop">
               <h3
                 className="padding10 border-bottom-dark-gray margin0"
-                ref={c => {
+                ref={(c) => {
                   this.cropPanel = c
                 }}>
                 Crop
@@ -230,7 +241,7 @@ export default class ImageEditor extends Component {
             <div className="img-panel-filter">
               <h3
                 className="padding10 border-bottom-dark-gray margin0"
-                ref={c => {
+                ref={(c) => {
                   this.filterPanel = c
                 }}>
                 Filter
@@ -268,7 +279,7 @@ function InputRange(props) {
         type="range"
         name={name}
         data-name={name}
-        onChange={e => func(e)}
+        onChange={(e) => func(e)}
         min={min}
         max={max}
         step={step}
