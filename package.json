@@ -8,7 +8,7 @@
     "draft-js": "^0.10.5",
     "draft-js-plugins-editor": "^2.1.1",
     "jquery": "^3.4.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "react": "^16.8.6",
     "react-avatar-editor": "github:tarun7886/react-avatar-editor#build",
     "react-bootstrap": "^1.0.0-beta.8",
