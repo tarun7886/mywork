@@ -77,7 +77,7 @@ const mixin = (itemCount, show = false) => {
 
 const OuterCircle = Styled.div`
 		position: fixed;
-		z-index: 1000;
+		z-index: ${({ navigationOpen }) => (navigationOpen ? 1000 : -1)};
 		opacity: ${({ navigationOpen }) => (navigationOpen ? 1 : 0)};
 		top: calc(50% - ${({ navigationOpen }) => (navigationOpen ? '200px' : '0px')});
 		left: calc(50% - ${({ navigationOpen }) => (navigationOpen ? '200px' : '0px')});

@@ -27,6 +27,12 @@ const NavigationBar = ({ isOpen, toggleLeftNav }) => {
       icon: 'games',
       extendClass: 'left-left-module',
     },
+    {
+      text: 'Finance Tool',
+      to: 'finance-tool',
+      icon: 'calculator',
+      extendClass: 'left-left-module',
+    },
     'space',
     { text: 'About', to: 'about', icon: 'book' },
     { text: 'Contact', to: 'contact', icon: 'phone' },

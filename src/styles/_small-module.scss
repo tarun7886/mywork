@@ -62,7 +62,7 @@
   }
   &.image-1 {
     height: 600px;
-    background-image: url('/images/img_parallax.jpg');
+    // background-image: url(#{process.env.REACT_APP_ASSETS} + 'about/images/img_parallax.jpg');
     .ab-heading {
       @extend %make-center;
       text-align: center;

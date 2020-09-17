@@ -8,6 +8,7 @@ import ImageEditor from '../component/ImageEditor'
 import NotFoundPage from '../component/NotFoundPage'
 import Home2 from './Home2'
 import Tambola from '../component/Tambola'
+import Finance from '../component/Finance'
 
 const LayoutWorkspace = (props) => {
   return (
@@ -22,6 +23,7 @@ const LayoutWorkspace = (props) => {
         <Route path={`/text-editor`} component={TextEditor} />
         <Route path={'/image-editor'} component={ImageEditor} />
         <Route path={'/tambola'} component={Tambola} />
+        <Route path={'/finance-tool'} component={Finance} />
         <Route path="*" exact={true} component={NotFoundPage} />
       </Switch>
     </div>

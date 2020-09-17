@@ -182,7 +182,7 @@ body {
       align-items: center;
       &-icon {
         display: flex;
-        margin-left: 20px;
+        margin-left: 13px;
         transition: margin-left 200ms ease-in;
         width: 40px;
         height: 40px;
@@ -272,6 +272,7 @@ body {
       flex-grow: 0;
       flex-shrink: 0;
       font-size: 20px;
+      margin-right: 5px;
       .icon-training {
         font-size: 24px;
       }
